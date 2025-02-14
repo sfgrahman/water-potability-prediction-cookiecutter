@@ -2,6 +2,10 @@ water-potability-prediction-cookiecutter
 ==============================
 
 water potability prediction using ML
+dvc init
+dvc stage add -n data_collection -d src/data/data_collection.py -o data/raw python src/data/data_collection.py
+dvc stage add -n data_preprocessing -d src/data/data_prep.py -d data/raw -o data/processed python src/data/data_prep.py
+dvc stage add -n model_building -d src/model/model_building.py -d  data/processed -o models/model.pkl python src/model/model_building.py
 
 Project Organization
 ------------
@@ -50,7 +54,6 @@ Project Organization
     │       └── visualize.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
 
 --------
 
